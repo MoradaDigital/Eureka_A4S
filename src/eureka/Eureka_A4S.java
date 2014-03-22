@@ -17,6 +17,7 @@ package eureka;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.util.Enumeration;
 
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
@@ -32,12 +33,13 @@ public class Eureka_A4S {
 
 	private static int refresh_rate_30msec = 60;// after 1800 millisec arduino.
 												// init
-	//private static int REPORT_DIGITAL = 0xD0; // Habilita digital input de dados
-												// pela porta
+	// private static int REPORT_DIGITAL = 0xD0; // Habilita digital input de
+	// dados
+	// pela porta
 
 	private static final int PORT = 12345; // Configure para a porta que sua
 											// extension ira receber conexoes
-	//private static int volume = 8; // Troque para os dados de sua extension
+	// private static int volume = 8; // Troque para os dados de sua extension
 
 	private static InputStream sockIn;
 	private static OutputStream sockOut;
@@ -81,13 +83,22 @@ public class Eureka_A4S {
 
 		CommPortIdentifier portIdentifier;
 		CommPort commPort;
+
 		int i = 0;
 
 		// 1) Verificacao dos parametros
 		try {
 			if (args.length < 1) {
-				System.err.println("Informe a PORTA SERIAL na linha de comando.");
-				System.err.println("java -jar Eureka_A4S <porta serial>");
+				System.err.println("Error: Porta (USB) serial nao informada.\n");
+				System.err.println("Portas Seriais encontradas:");
+				
+				Enumeration portIdentifiers = CommPortIdentifier.getPortIdentifiers(); 
+				while (portIdentifiers.hasMoreElements()) {
+					CommPortIdentifier pid = (CommPortIdentifier) portIdentifiers.nextElement();
+					System.out.println(" -> "+pid.getName());
+				}
+				System.err.println("\n\rInforme a PORTA SERIAL na linha de comando.");
+				System.err.println("Exemplo: $ java -jar Eureka_A4S.jar <porta serial>");
 
 				return;
 			}
@@ -112,6 +123,7 @@ public class Eureka_A4S {
 				System.err.println("Problemas na localizacao da Porta Serial " + args[0]);
 				System.err.println(i + " " + e);
 				
+				System.exit(0);
 			}
 		}
 
@@ -240,7 +252,7 @@ public class Eureka_A4S {
 
 		if (DEBUG_ACTIVE)
 			if (cmd.equals("poll") == false)
-				System.out.print(cmdAndArgs+"\n");
+				System.out.print(cmdAndArgs + "\n");
 
 		// try {
 		/*
@@ -312,7 +324,7 @@ public class Eureka_A4S {
 				num_of_poll_reponse++;
 				if (num_of_poll_reponse == 120) {
 					num_of_poll_reponse = 0;
-					 //System.out.println(" " + response);
+					// System.out.println(" " + response);
 				}
 			}
 		} else {
