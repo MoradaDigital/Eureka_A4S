@@ -71,11 +71,13 @@ public class Eureka_A4S {
 	public static MyWriter writer;
 
 	public static void main(String[] args) throws IOException {
-
-		System.out.println("\n\r\n\r|*************** EUREKA_A4S *****************|");
-		System.out.println("| App para controlar o Arduino pelo Scratch. |");
-		System.out.println("|   - By Ville Medeiros do Patrulha Eureka.  |");
-		System.out.println("|____________________________________________|");
+		System.out.println("\n\r\n\r");
+		System.out.println("+-------------------------------------------------+");
+		System.out.println("|***** ARDUINANDO COM SCRATCH COM EUREKA_A4S *****|");
+		System.out.println("|-------------------------------------------------|");
+		System.out.println("| Servidor para controlar o Arduino pelo Scratch. |");
+		System.out.println("|        - By Ville Medeiros do Patrulha Eureka.  |");
+		System.out.println("+-------------------------------------------------+");
 
 		CommPortIdentifier portIdentifier;
 		CommPort commPort;
