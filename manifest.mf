@@ -1,0 +1,2 @@
+Main-Class: eureka/Eureka_A4S
+Class-Path: lib/RXTXComm.jar lib/Arduino.jar

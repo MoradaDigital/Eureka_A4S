@@ -1,0 +1,15 @@
+{	"extensionName": "Eureka_A4S",
+	"extensionPort": 12345,
+	"blockSpecs": [
+		[" ", "configure pin %n as %m.inputOutput", "pinMode", 2, "input"],
+		[" ", "digital write pin %n to %m.highLow", "digitalWrite", 13, "high"],
+		[" ", "analog write pin %n to %n", "analogWrite", 11, 0],
+		[" ", "move servo on pin %n to %n degrees", "servoWrite", 11, 0],
+		["b", "digital read pin %n", "digitalRead", 2],
+		["r", "analog read pin %n", "analogRead", 0],
+	],
+	"menus": {
+		"inputOutput": ["input", "output", "pwm", "servo"],
+		"highLow": ["high", "low"],
+	},
+}
