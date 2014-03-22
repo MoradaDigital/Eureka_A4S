@@ -1,12 +1,12 @@
 # Eureka_A4S
 ==========
 
-Eureka_A4S eh um servidor que disponibiliza um link de comunicacao entre o [Scratch 2](http://scratch.mit.edu) e o A[Arduino](http://www.arduino.cc) executando o [Firmata](http://firmata.org/).
+Eureka_A4S eh um servidor que disponibiliza um link de comunicacao entre o [Scratch 2](http://scratch.mit.edu) e o [Arduino](http://www.arduino.cc) executando o [Firmata](http://firmata.org/).
 
 ## Funcionamento
 Em sua versao 2.0 o [Scratch](http://scratch.mit.edu) possui o recurso [Scratch Extension](http://wiki.scratch.mit.edu/wiki/Scratch_Extension) que permite a conexao do Scratch com outros sistemas, sejam eles Hardware ou Web.
 O Eureka_A4S eh um servidor Java que conecta com o Scratch utilizando o protocolo HTTP e se comunica com o Arduino pela porta (USB) Serial.
-O Eureka_A4S esta sendo desenvolvido por Ville Medeiros baseado nos projetos: [A4S by David Mellis](https://github.com/damellis/A4S/) e [scratch4arduino by Thatpixguy](https://github.com/thatpixguy/scratch4arduino), ambos baseados na documentacao e codigos do [Time do Scratch](http://wiki.scratch.mit.edu/wiki/Scratch_Extension_Protocol_(2.0)).
+O Eureka_A4S esta sendo desenvolvido por [Ville Medeiros](mailto:ville.medeiros@gmail.com) inspirado nos projetos: [A4S](https://github.com/damellis/A4S/) by David Mellis e [scratch4arduino](https://github.com/thatpixguy/scratch4arduino) by Thatpixguy, ambos baseados na documentacao e codigos do [Time do Scratch](http://wiki.scratch.mit.edu/wiki/Scratch_Extension_Protocol_(2.0)).
 
 Para atualizacoes acesse o link do projeto Eureka_A4S: <https://github.com/villemedeiros/Eureka_A4S>.
 
