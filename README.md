@@ -34,7 +34,7 @@ O Eureka_A4S eh um servidor Java que conecta com o Scratch utilizando o protocol
 		Scratch UP no host.: VillaoMAC.local/10.1.1.2
 	
 6. Execute o Scratch 2 offline editor.
-7. Pressione a tecla <shift> click no menu "Arquivo", assim sera disponibilizado a opcao "Import Experimental Extension" no final do menu. Click nele.
+7. Com a tecla "shift" pressionada click no menu "Arquivo", assim sera disponibilizado a opcao "Import Experimental Extension" no final do menu. Click nele.
 8. Navegue nos diretorios do Eureka_A4S e selecione o arquivo Eureka_A4S.s2e.
 9. Voce devera ver a extensao Eureka_A4S e seu blocos em "Mais Blocos" na aba Roteiros do Scratch Editor.
    Se o servidor Eureka_A4S estiver executando corretamente, vai aparecer uma bolinha verde proximo do titulo Eureka_A4S. 
