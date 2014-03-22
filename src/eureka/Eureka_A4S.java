@@ -187,22 +187,16 @@ public class Eureka_A4S {
 	}
 
 	private static void handleRequest() throws IOException {
-		String httpBuf = "";
 		int i;
+		byte[] buf = new byte[5000];
+		;
 
-		// read data until the first HTTP header line is complete (i.e. a '\n'
-		// is seen)
-		while ((i = httpBuf.indexOf('\n')) < 0) {
-			byte[] buf = new byte[5000];
-			int bytes_read = sockIn.read(buf, 0, buf.length);
-			if (bytes_read < 0) {
-				System.out.println("Socket closed; no HTTP header.");
-				return;
-			}
-			httpBuf += new String(Arrays.copyOf(buf, bytes_read));
-		}
+		int bytes_read = sockIn.read(buf, 0, buf.length);
+		StringBuilder httpBuffer = new StringBuilder(new String(Arrays.copyOf(buf, bytes_read)));
 
-		String header = httpBuf.substring(0, i);
+		i = httpBuffer.indexOf("\n");
+
+		String header = httpBuffer.substring(0, i);
 		if (header.indexOf("GET ") != 0) {
 			System.out.println("This server only handles HTTP GET requests.");
 			return;
@@ -232,43 +226,28 @@ public class Eureka_A4S {
 
 	private static void sendResponse(String s) {
 		String crlf = "\r\n";
-		String httpResponse = "HTTP/1.1 200 OK" + crlf;
-		httpResponse += "Content-Type: text/html; charset=ISO-8859-1" + crlf;
-		httpResponse += "Access-Control-Allow-Origin: *" + crlf;
-		httpResponse += crlf;
-		httpResponse += s + crlf;
+		StringBuilder httpResponse = new StringBuilder("HTTP/1.1 200 OK" + crlf);
+		httpResponse.append("Content-Type: text/html; charset=ISO-8859-1" + crlf);
+		httpResponse.append("Access-Control-Allow-Origin: *" + crlf);
+		httpResponse.append(crlf);
+		httpResponse.append(s + crlf);
 		try {
-			byte[] outBuf = httpResponse.getBytes();
+			byte[] outBuf = httpResponse.toString().getBytes();
 			sockOut.write(outBuf, 0, outBuf.length);
 		} catch (Exception ignored) {
 		}
 	}
 
 	private static void doCommand(String cmdAndArgs) {
-		// Essential: handle commands understood by this server
-		String response = "okay";
+		// Essential: manuseia os comandos entendidos pelo servidor
+		StringBuilder response = new StringBuilder("okay");
 		String[] parts = cmdAndArgs.split("/");
 		String cmd = parts[0];
 
 		if (DEBUG_ACTIVE)
 			if (cmd.equals("poll") == false)
-				System.out.print(cmdAndArgs + "\n");
+				System.out.print("  > "+cmdAndArgs + "\n");
 
-		// try {
-		/*
-		 * old commands to be removed if (cmd.equals("pinOutput")) {
-		 * arduino.pinMode(Integer.parseInt(parts[1]), Firmata.OUTPUT); } else
-		 * if (cmd.equals("pinInput")) {
-		 * arduino.pinMode(Integer.parseInt(parts[1]), Firmata.INPUT);
-		 * 
-		 * } else if (cmd.equals("pinPwm")) {// added pwm
-		 * arduino.pinMode(Integer.parseInt(parts[1]), Firmata.PWM);
-		 * 
-		 * } else if (cmd.equals("pinHigh")) {
-		 * arduino.digitalWrite(Integer.parseInt(parts[1]), Firmata.HIGH); }
-		 * else if (cmd.equals("pinLow")) {
-		 * arduino.digitalWrite(Integer.parseInt(parts[1]), Firmata.LOW); } else
-		 */
 		if (cmd.equals("pinMode")) {
 			if ("input".equals(parts[2])) // added pwm
 			{
@@ -277,18 +256,12 @@ public class Eureka_A4S {
 				// set report active without this digital input is not updated
 				if (DEBUG_ACTIVE)
 					System.out.println("sent digital report");
-				/*
-				 * for (int i = 0; i < 16; i++) {
-				 * serialPort.getOutputStream().write(REPORT_DIGITAL | i);
-				 * serialPort.getOutputStream().write(1); }
-				 */
 				arduino.init();
 			} else if ("output".equals(parts[2]))
 				arduino.pinMode(Integer.parseInt(parts[1]), Firmata.OUTPUT);
 			else if ("pwm".equals(parts[2])) // added pwm
 			{
 				arduino.pinMode(Integer.parseInt(parts[1]), Firmata.PWM);
-				// System.out.println("pwm requested \n");
 			}
 			if ("servo".equals(parts[2])) // added servo
 			{
@@ -302,17 +275,33 @@ public class Eureka_A4S {
 			arduino.servoWrite(Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
 
 		} else if (cmd.equals("poll")) {
-			// set response to a collection of sensor, value pairs, one pair per
-			// line
-			// in this example there is only one sensor, "volume"
-			// response = "volume " + volume + "\n";
-			response = "";
+			// monta o conjunto dodos enviado para o Scratch no formato "pino valor"
+			//			digitalRead/2 false
+			//			digitalRead/3 false
+			//			digitalRead/4 false
+			//			digitalRead/5 false
+			//			digitalRead/6 false
+			//			digitalRead/7 false
+			//			digitalRead/8 false
+			//			digitalRead/9 false
+			//			digitalRead/10 false
+			//			digitalRead/11 false
+			//			digitalRead/12 false
+			//			digitalRead/13 false
+			//			analogRead/0 0
+			//			analogRead/1 0
+			//			analogRead/2 0
+			//			analogRead/3 0
+			//			analogRead/4 0
+			//			analogRead/5 0
+			
+			response = new StringBuilder("");
 			for (int i = 2; i <= 13; i++) {
-				response += "digitalRead/" + i + " " + (arduino.digitalRead(i) == Firmata.HIGH ? "true" : "false")
-						+ "\n";
+				response.append("digitalRead/").append(i).append(" ")
+						.append(arduino.digitalRead(i) == Firmata.HIGH ? "true" : "false").append("\n");
 			}
 			for (int i = 0; i <= 5; i++) {
-				response += "analogRead/" + i + " " + (arduino.analogRead(i)) + "\n";
+				response.append("analogRead/").append(i).append(" ").append(arduino.analogRead(i)).append("\n");
 
 			}
 			refresh_rate_30msec--;
@@ -324,21 +313,20 @@ public class Eureka_A4S {
 				num_of_poll_reponse++;
 				if (num_of_poll_reponse == 120) {
 					num_of_poll_reponse = 0;
-					// System.out.println(" " + response);
+					//System.out.println(" " + response);
 				}
 			}
 		} else {
-			response = "unknown command: " + cmd;
+			response.append("comando desconhecido: ").append(cmd);
 		}
 
-		sendResponse(response);
-		// } catch (IOException e) {
-		// System.err.println(e); }
+		sendResponse(response.toString());
+
 	}
 
 	private static void doHelp() {
 		// Optional: return a list of commands understood by this server
-		String help = "HTTP Extension Example Server<br><br>";
+		String help = "Servidor HTTP para controlar o Arduino pelo Scratch.<br><br>";
 		sendResponse(help);
 	}
 
