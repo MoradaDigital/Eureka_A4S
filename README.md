@@ -23,10 +23,12 @@ O Eureka_A4S eh um servidor Java que conecta com o Scratch utilizando o protocol
 		
    Devera ver uma mensagem como esta:
    
-   		|*************** EUREKA_A4S *****************|
-		| App para controlar o Arduino pelo Scratch. |
-		|   - By Ville Medeiros do Patrulha Eureka.  |
-		|____________________________________________|
+		+-------------------------------------------------+
+		|***** ARDUINANDO COM SCRATCH COM EUREKA_A4S *****|
+		|-------------------------------------------------|
+		| Servidor para controlar o Arduino pelo Scratch. |
+		|        - By Ville Medeiros do Patrulha Eureka.  |
+		+-------------------------------------------------+
 		Abrindo conexao com Arduino....
 		Arduino UP na porta.: /dev/tty.usbmodemfd131
 		
