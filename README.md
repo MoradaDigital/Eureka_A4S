@@ -4,7 +4,7 @@ Eureka_A4S eh um servidor que disponibiliza um link de comunicacao entre o [Scra
 
 ## Funcionamento
 Em sua versao 2.0 o [Scratch](http://scratch.mit.edu) possui o recurso [Scratch Extension](http://wiki.scratch.mit.edu/wiki/Scratch_Extension) que permite a conexao do Scratch com outros sistemas, sejam eles Hardware ou Web.
-Aproveitando este recurso o Eureka_A4S atua como intermediário, conecta com o Scratch utilizando o protocolo HTTP e se comunica com o Arduino pela porta (USB) Serial.
+Aproveitando este recurso o Eureka_A4S atua como intermediário. Conecta com o Scratch utilizando o protocolo HTTP e se comunica com o Arduino pela porta (USB) serial repassando os dados de um para o outro, no formato que eles entendam, e vice-versa.
 
 ## Instrucoes
 
