@@ -4,11 +4,11 @@
 Eureka_A4S eh um servidor que disponibiliza um link de comunicacao entre o [Scratch 2](http://scratch.mit.edu) e o A[Arduino](http://www.arduino.cc) executando o [Firmata](http://firmata.org/).
 
 ## Funcionamento
-Em sua versao 2.0 o [Scratch](http://scratch.mit.edu) possui o recurso [Scratch Extension]http://wiki.scratch.mit.edu/wiki/Scratch_Extension que permite a conexao do Scratch com outros sistemas, sejam eles Hardware ou Web.
+Em sua versao 2.0 o [Scratch](http://scratch.mit.edu) possui o recurso [Scratch Extension](http://wiki.scratch.mit.edu/wiki/Scratch_Extension) que permite a conexao do Scratch com outros sistemas, sejam eles Hardware ou Web.
 O Eureka_A4S eh um servidor Java que conecta com o Scratch utilizando o protocolo HTTP e se comunica com o Arduino pela porta (USB) Serial.
-O Eureka_A4S esta sendo desenvolvido por Ville Medeiros baseado nos projetos: [A4S by David Mellis]https://github.com/damellis/A4S/ e [scratch4arduino by Thatpixguy](https://github.com/thatpixguy/scratch4arduino), ambos baseados na documentacao e codigos do [Time do Scratch](http://wiki.scratch.mit.edu/wiki/Scratch_Extension_Protocol_(2.0)).
+O Eureka_A4S esta sendo desenvolvido por Ville Medeiros baseado nos projetos: [A4S by David Mellis](https://github.com/damellis/A4S/) e [scratch4arduino by Thatpixguy](https://github.com/thatpixguy/scratch4arduino), ambos baseados na documentacao e codigos do [Time do Scratch](http://wiki.scratch.mit.edu/wiki/Scratch_Extension_Protocol_(2.0)).
 
-Para atualizacoes acesse o link do projeto Eureka_A4S <https://github.com/villemedeiros/Eureka_A4S>.
+Para atualizacoes acesse o link do projeto Eureka_A4S: <https://github.com/villemedeiros/Eureka_A4S>.
 
 ## Instrucoes
 
@@ -18,7 +18,7 @@ Para atualizacoes acesse o link do projeto Eureka_A4S <https://github.com/villem
 4. Download do [Eureka_A4S](https://github.com/villemedeiros/Eureka_A4S/archive/master.zip) do GitHub e descompacte-o.
 5. Execute o servidor usando o script "Eureka_A4S_run.sh" na linha de comando, passando como parametro o nome da porta serial que o seu Arduino esta.
 
-		Exemplo: $ Eureka_A4S_run.sh /dev/tty.usbmodemfd131.
+		Exemplo: $ Eureka_A4S_run.sh /dev/tty.usbmodemfd131
 		
    Devera ver uma mensagem como esta:
    
@@ -33,11 +33,11 @@ Para atualizacoes acesse o link do projeto Eureka_A4S <https://github.com/villem
 		Scratch UP no host.: VillaoMAC.local/10.1.1.2
 	
 6. Execute o Scratch 2 offline editor.
-7. Pressione a tecla <shift> click no menu "Arquivo", assim será disponibilizado a opcao "Import Experimental Extension" no final do menu. Click nele.
-8. Navegue nos diretórios do Eureka_A4S e selecione o arquivo Eureka_A4S.s2e.
-9. Você deverá ver a extensao Eureka_A4S e seu blocos em "Mais Blocos" na aba Roteiros do Scratch Editor.
+7. Pressione a tecla <shift> click no menu "Arquivo", assim sera disponibilizado a opcao "Import Experimental Extension" no final do menu. Click nele.
+8. Navegue nos diretorios do Eureka_A4S e selecione o arquivo Eureka_A4S.s2e.
+9. Voce devera ver a extensao Eureka_A4S e seu blocos em "Mais Blocos" na aba Roteiros do Scratch Editor.
    Se o servidor Eureka_A4S estiver executando corretamente, vai aparecer uma bolinha verde proximo do titulo Eureka_A4S. 
 
-Agora eh só programar.
-No diretório exemplos existem alguns projetos para testa o Eureka_A4S.   
+Agora eh so programar.
+No diretorio exemplos existem alguns projetos para testa o Eureka_A4S.   
    
