@@ -91,11 +91,11 @@ public class Eureka_A4S {
 			if (args.length < 1) {
 				System.err.println("Error: Porta (USB) serial nao informada.\n");
 				System.err.println("Portas Seriais encontradas:");
-				
-				Enumeration portIdentifiers = CommPortIdentifier.getPortIdentifiers(); 
+
+				Enumeration portIdentifiers = CommPortIdentifier.getPortIdentifiers();
 				while (portIdentifiers.hasMoreElements()) {
 					CommPortIdentifier pid = (CommPortIdentifier) portIdentifiers.nextElement();
-					System.out.println(" -> "+pid.getName());
+					System.out.println(" -> " + pid.getName());
 				}
 				System.err.println("\n\rInforme a PORTA SERIAL na linha de comando.");
 				System.err.println("Exemplo: $ java -jar Eureka_A4S.jar <porta serial>");
@@ -120,9 +120,9 @@ public class Eureka_A4S {
 				break;
 			} catch (Exception e) {
 
-				System.err.println("Problemas na localizacao da Porta Serial " + args[0]);
+				System.err.println("Problemas na localizacao da Porta Serial:" + args[0]);
 				System.err.println(i + " " + e);
-				
+
 				System.exit(0);
 			}
 		}
@@ -153,7 +153,7 @@ public class Eureka_A4S {
 				serialPort.addEventListener(reader);
 				serialPort.notifyOnDataAvailable(true);
 			} else {
-				System.out.println("Error: Apenas portas seriais sao utilizadas.");
+				System.err.println("Error: Apenas portas seriais devem ser utilizadas.");
 				return;
 			}
 
