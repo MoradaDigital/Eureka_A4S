@@ -253,9 +253,7 @@ public class Eureka_A4S {
 			{
 				arduino.pinMode(Integer.parseInt(parts[1]), Firmata.INPUT);
 
-				// set report active without this digital input is not updated
-				if (DEBUG_ACTIVE)
-					System.out.println("sent digital report");
+				// Executando init() para atualizar os pinos de input/output
 				arduino.init();
 			} else if ("output".equals(parts[2]))
 				arduino.pinMode(Integer.parseInt(parts[1]), Firmata.OUTPUT);
