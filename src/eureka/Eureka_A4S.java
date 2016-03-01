@@ -1,13 +1,13 @@
 package eureka;
 
 //************************** Eureka_A4S *********************************** 
-// ƒ um fork dos seguintes projeto:
+// ? um fork dos seguintes projeto:
 // Baseado nas ideias do projeto A4S
 //    -> https://github.com/thatpixguy/scratch4arduino - by Claudio Becchetti
 //      |-> https://github.com/cbecc/scratch4arduino - by thatpixguy
 //         |-> https://github.com/villemedeiros/eureka_a4s - by Ville Medeiros
 //
-// O Eureka_A4S Ž um Helper app que executa um servidor HTTP que permite o Scrath a se comunicar
+// O Eureka_A4S ? um Helper app que executa um servidor HTTP que permite o Scrath a se comunicar
 // com as placas Arduino rodando o Firmata firmware.
 //
 // Agradeco ao Claudio Becchetti e o Thatpixguy.
@@ -104,7 +104,7 @@ public class Eureka_A4S {
 			}
 
 		} catch (Exception e) {
-			System.err.println("Porta Serial n‹o encontrada como parametro");
+			System.err.println("Porta Serial n?o encontrada como parametro");
 			System.err.println(e.getStackTrace()[0].getLineNumber() + ":" + e);
 			return;
 		}
@@ -142,7 +142,7 @@ public class Eureka_A4S {
 			System.out.println("Abrindo conexao com Arduino....");
 			if (commPort instanceof SerialPort) {
 				serialPort = (SerialPort) commPort;
-				serialPort.setSerialPortParams(57600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
+				serialPort.setSerialPortParams(115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
 						SerialPort.PARITY_NONE);
 
 				writer = new MyWriter();
@@ -158,7 +158,7 @@ public class Eureka_A4S {
 			}
 
 		} catch (Exception e) {
-			System.err.println("Error: n‹o foi possivel abrir a porta.: " + args[0]);
+			System.err.println("Error: n?o foi possivel abrir a porta.: " + args[0]);
 			System.err.println(e);
 			return;
 		}
@@ -179,7 +179,7 @@ public class Eureka_A4S {
 				handleRequest();
 			} catch (Exception e) {
 				e.printStackTrace(System.err);
-				sendResponse("Error: servidor n‹o esta respondendo.");
+				sendResponse("Error: servidor n?o esta respondendo.");
 			}
 			sock.close();
 		}
